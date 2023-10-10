@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+//import logo from './logo.svg';
+//import './App.css';
+
+import UserBar from "./UserBar";
+import CreatePost from "./CreatePost";
+import {useState} from "react";
+import PostList from "./PostList";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [user,setUser] = useState("")
+
+    const initialPosts = []
+
+    const [posts, setPosts] = useState(initialPosts);
+
+    //handled differently in slides
+    const handleAddPost = (newPost) => {setPosts([newPost,...posts]);};
+
+
+    return (
+        <div>
+            <UserBar user={user} setUser={setUser}/>
+            <CreatePost user={user} handleAddPost={handleAddPost}/>
+            <PostList posts={posts}/>
+        </div>
+    )
 }
 
 export default App;
