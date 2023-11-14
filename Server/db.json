@@ -1,0 +1,114 @@
+{
+  "posts": [
+    {
+      "title": "newPost",
+      "content": "new",
+      "author": "",
+      "date": 1699853865146,
+      "dateCompleted": "",
+      "completed": true,
+      "id": "119689a2-d6c7-4c4c-928e-5b9b0d0c1212"
+    },
+    {
+      "title": "a",
+      "content": "a",
+      "author": "",
+      "date": 1699854950984,
+      "dateCompleted": "",
+      "booleanCompleted": "true",
+      "id": "512935ab-2cce-4d0f-a9dc-3f432b9e3c46"
+    },
+    {
+      "title": "a",
+      "content": "a",
+      "author": "",
+      "date": 1699854981963,
+      "dateCompleted": "",
+      "booleanCompleted": "true",
+      "id": "5388ce43-72de-4e20-9f6d-a37c82ba5c13"
+    },
+    {
+      "title": "try post",
+      "content": "I guess",
+      "author": "",
+      "date": 1699855339201,
+      "dateCompleted": "",
+      "booleanCompleted": "false",
+      "id": "7c95572c-d076-4ce9-a092-541aeb05bb6d"
+    },
+    {
+      "title": "I think",
+      "content": "I know",
+      "author": "",
+      "date": 1699855425713,
+      "dateCompleted": 1699947651480,
+      "booleanCompleted": 1,
+      "id": "858ea00c-9075-4ba8-af29-33193929ebc7"
+    },
+    {
+      "title": "d",
+      "content": "d",
+      "author": "",
+      "date": 1699855494735,
+      "dateCompleted": 1699947526496,
+      "booleanCompleted": 1,
+      "id": "bd38dc98-6dac-433e-b0f7-4ba8ad7aa14b"
+    },
+    {
+      "title": "gg",
+      "content": "gg",
+      "author": "",
+      "date": 1699947680788,
+      "dateCompleted": 1699948147228,
+      "booleanCompleted": true,
+      "id": "f0f33582-d557-43d8-b3e7-70e6a242ac23"
+    },
+    {
+      "title": "ff",
+      "content": "ff",
+      "author": "",
+      "date": 1699947827947,
+      "dateCompleted": 1699947829751,
+      "booleanCompleted": true,
+      "id": "044f7ab6-0971-4666-a86a-5c6b3b5e60f0"
+    },
+    {
+      "title": "dd",
+      "content": "dd",
+      "author": "",
+      "date": 1699948154856,
+      "dateCompleted": 1699948156009,
+      "booleanCompleted": true,
+      "id": "6a23fa97-1887-4b9c-9537-9ffe4aaa91e0"
+    }
+  ],
+  "users": [
+    {
+      "email": "duszak.paul@gmail.com",
+      "password": "$2a$10$JphRAYuapFILI4BoQldnQeLRFM2m031cBOkgw7C9Xl611xwnX/1le",
+      "id": 1
+    },
+    {
+      "email": "email@email",
+      "password": "$2a$10$aWCnfPegcUB3EGMOv8ijbuGComRCRgYV5eTOj9CzRQ3ysLiMnYgG2",
+      "id": 2
+    },
+    {
+      "email": "new@email",
+      "password": "$2a$10$8L1KvQqKNq9yTJvrnLJ.neaBWCiJof77wz0r2JceLnRBX6BTjZ/Rm",
+      "id": 3
+    }
+  ],
+  "themes": [
+    {
+      "id": 1,
+      "primaryColor": "deepskyblue",
+      "secondaryColor": "coral"
+    },
+    {
+      "primaryColor": "red",
+      "secondaryColor": "blue",
+      "id": 2
+    }
+  ]
+}
