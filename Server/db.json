@@ -97,6 +97,11 @@
       "email": "new@email",
       "password": "$2a$10$8L1KvQqKNq9yTJvrnLJ.neaBWCiJof77wz0r2JceLnRBX6BTjZ/Rm",
       "id": 3
+    },
+    {
+      "email": "test@test",
+      "password": "$2a$10$7xMVmI/IseQIImu2lCmZYeJg9rFlvoo.RgX5.c1Sk5iXXDmpuXGkm",
+      "id": 4
     }
   ],
   "themes": [

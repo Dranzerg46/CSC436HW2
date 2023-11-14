@@ -28,7 +28,7 @@ function todoReducer(state, action) {
         case "TOGGLE_TODO":
             return "";
         case "DELETE_TODO":
-            return state;
+            return state.filter((post) => post.id !== action.id)
         default:
             return state;
     }

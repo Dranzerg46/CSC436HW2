@@ -61,7 +61,7 @@ export default function Post ({ id, title, content, author, date, dateCompleted,
         value = 'Deleted'
         setDeleted(value);
         deleteTodo();
-         dispatch({ type: 'DELETE_TODO'}, /*updateTodo*/)
+         dispatch({ type: 'DELETE_TODO', id: id} /*updateTodo*/)
     }
 
     return (
@@ -75,7 +75,7 @@ export default function Post ({ id, title, content, author, date, dateCompleted,
             <input type="checkbox" name = "input-checkbox" id = "input-checkbox"  checked={checked} onChange={handleCompleted} disabled={x === true}/>
             <br />
             <div>dateCompleted: {endDate}</div>
-            <form onSubmit={e => {e.preventDefault(); alert("Todo Deleted. Refresh to update");handleDelete();}}>
+            <form onSubmit={e => {e.preventDefault();handleDelete();}}>
             <input type="submit" value="Delete" />
             </form>
             <br />
