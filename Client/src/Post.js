@@ -4,8 +4,7 @@ import {StateContext, ThemeContext} from "./contexts";
 import {useResource} from "react-request-hook";
 import App from "./App";
 
-export default function Post ({ id, title, content, author, date, dateCompleted, booleanCompleted}) {
-
+export default function Post ({ _id, title, content, author, date, dateCompleted, booleanCompleted}) {
 
 
     const { secondaryColor } = useContext(ThemeContext);
@@ -17,18 +16,21 @@ export default function Post ({ id, title, content, author, date, dateCompleted,
     const [deleted, setDeleted] = useState('');
     const {state, dispatch} = useContext(StateContext);
     let value = '';
-    const x = completed;
-
+    const x = booleanCompleted;
+    //const ObjectIdString = id.toString();
+    const { user } = state;
 
     const [post , toggleTodo ] = useResource(({ dateCompleted, booleanCompleted }) => ({
-        url: '/posts/' + id ,
+        url: '/post/'  +_id ,
         method: 'patch',
+        headers: { Authorization: `${state?.user?.access_token}` },
         data: { dateCompleted, booleanCompleted }
     }))
 
     const [post1 , deleteTodo ] = useResource(() => ({
-        url: '/posts/' + id ,
+        url: '/post/' + _id,
         method: 'delete',
+        headers: { Authorization: `${state?.user?.access_token}` },
         data: { }
     }))
 
@@ -61,7 +63,7 @@ export default function Post ({ id, title, content, author, date, dateCompleted,
         value = 'Deleted'
         setDeleted(value);
         deleteTodo();
-         dispatch({ type: 'DELETE_TODO', id: id} /*updateTodo*/)
+         dispatch({ type: 'DELETE_TODO', _id: _id} /*updateTodo*/)
     }
 
     return (
@@ -72,7 +74,7 @@ export default function Post ({ id, title, content, author, date, dateCompleted,
             <br />
             <div>Date Created: {date}</div>
             <label htmlFor="Completed">Completed?</label>
-            <input type="checkbox" name = "input-checkbox" id = "input-checkbox"  checked={checked} onChange={handleCompleted} disabled={x === true}/>
+            <input type="checkbox" name = "input-checkbox" id = "input-checkbox"  checked={checked} onChange={handleCompleted} disabled={x === 1}/>
             <br />
             <div>dateCompleted: {endDate}</div>
             <form onSubmit={e => {e.preventDefault();handleDelete();}}>

@@ -4,16 +4,26 @@ import {useResource} from "react-request-hook";
 export default function Register({dispatchUser}) {
 
     const [user, register] = useResource((username, password) => ({
-        url: "/users",
+        url: "/auth/register",
         method: "post",
-        data: { email: username, password },
+        data: { username, password, passwordConfirmation: password },
     }));
+    const [status, setStatus] = useState("");
+//    useEffect(() => {
+//        if (user && user.data) {
+//            dispatchUser({ type: "REGISTER", username: user.data.user.email });
+//        }
+//    }, [user, dispatchUser]);
 
     useEffect(() => {
-        if (user && user.data) {
-            dispatchUser({ type: "REGISTER", username: user.data.user.email });
+        if (user && user.isLoading === false && (user.data || user.error)) {
+            if (user.error) {
+                setStatus("Registration failed, please try again later.");
+            } else {
+                setStatus("Registration successful. You may now login.");
+            }
         }
-    }, [user, dispatchUser]);
+    }, [user]);
 
 
 
@@ -24,7 +34,7 @@ export default function Register({dispatchUser}) {
     function handlePassword (evt) { setPassword(evt.target.value) }
     function handlePasswordRepeat (evt) { setPasswordRepeat(evt.target.value) }
     return (
-        <form onSubmit={e => {e.preventDefault(); register(username, password);dispatchUser({type: "REGISTER", username});}}>
+        <form onSubmit={e => {e.preventDefault(); register(username, password);/*dispatchUser({type: "REGISTER", username});*/}}>
 
             <label htmlFor="register-username">Username:</label>
             <input type="text" name="register-username" id="register-username" value = {username} onChange={handleUsername}/>
@@ -34,6 +44,7 @@ export default function Register({dispatchUser}) {
             <input type="password" name="register-password-repeat" id="register-password-repeat" value = {passwordRepeat} onChange={handlePasswordRepeat}/>
             <input type="submit" value="Register" disabled={username.length === 0 || password.length === 0 || password !==
                 passwordRepeat}/>
+            {status && <p>{status}</p>}
         </form>
     )
 }

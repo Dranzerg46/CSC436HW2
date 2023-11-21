@@ -22,21 +22,30 @@ function App() {
 //    }, [])
 
     const [ postResponse, getPosts ] = useResource(() => ({
-        url: '/posts',
-        method: 'get'
+        url: '/post',
+        method: 'get',
+        headers: { Authorization: `${state?.user?.access_token}` },
     }))
-    const [ state, dispatch ] = useReducer(appReducer, { user: '', /*posts: initialPosts */ posts: [] });
+    const [ state, dispatch ] = useReducer(appReducer, { user: "", /*posts: initialPosts */ posts: [] });
     const {user,posts} = state;
 
-    useEffect(getPosts, [])
+ //   useEffect(getPosts, [])
+
+//    useEffect(() => {
+//        if (postResponse && postResponse.data) {
+//            dispatch({type: "FETCH_POSTS", posts: postResponse.data.reverse()});
+//        }
+//    }, [postResponse]);
 
     useEffect(() => {
-        if (postResponse && postResponse.data) {
-            dispatch({type: "FETCH_POSTS", posts: postResponse.data.reverse()});
+        getPosts();
+    }, [state?.user?.access_token]);
+    useEffect(() => {
+        if (postResponse && postResponse.isLoading === false && postResponse.data) {
+            //dispatch({ type: "FETCH_POSTS", posts: postResponse.data.posts.reverse() });
+            dispatch({ type: "FETCH_POSTS", posts: postResponse.data.reverse() });
         }
     }, [postResponse]);
-
-
 
       //  const [ state, dispatch ] = useReducer(appReducer, { user: '', /*posts: initialPosts */ posts: [] });
 

@@ -1,8 +1,12 @@
 function userReducer(state, action) {
     switch (action.type) {
         case "LOGIN":
-        case "REGISTER":
-            return action.username;
+            return {
+                username: action.username,
+                access_token: action.access_token,
+            };
+      //  case "REGISTER":
+      //      return action.username;
         case "LOGOUT":
             return "";
         default:
@@ -20,7 +24,7 @@ function todoReducer(state, action) {
                 date: action.date,
                 dateCompleted: action.dateCompleted,
                 booleanCompleted: action.booleanCompleted,
-                id: action.id
+                _id: action._id
             };
             return [newPost, ...state];
         case "FETCH_POSTS":
@@ -28,7 +32,7 @@ function todoReducer(state, action) {
         case "TOGGLE_TODO":
             return "";
         case "DELETE_TODO":
-            return state.filter((post) => post.id !== action.id)
+            return state.filter((post) => post._id !== action._id)
         default:
             return state;
     }
